@@ -1,0 +1,17 @@
+{
+  "name": "product-qa",
+  "owner": { "name": "AY0-design" },
+  "metadata": {
+    "description": "Risk-based QA and release-readiness skill for Claude",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "product-qa",
+      "description": "Senior QA pass for anything built: risk analysis, failure-path tests, bug reports, flaky-test triage and release-readiness verdicts. Runs automatically after a feature is built.",
+      "source": "./",
+      "strict": false,
+      "skills": ["./skills/product-qa"]
+    }
+  ]
+}
