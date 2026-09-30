@@ -1,6 +1,6 @@
 ---
 name: product-qa
-description: Senior QA / quality-engineering pass for anything that gets built. Use this skill automatically, without being asked, as soon as you finish implementing a feature, fix, endpoint, screen, migration, job or integration, so the work is risk-tested and verified before you call it done. Also use it whenever the user asks how to test something, wants test cases or a test plan, asks "is this ready to ship / release?", wants a bug written up, has a failing or flaky test, wants tests or a PR reviewed for coverage, or mentions QA, regression, edge cases, or release readiness, even if they never say "QA".
+description: Senior QA / quality-engineering skill. Load it at the START of any task that builds or changes code (a feature, endpoint, method, screen, migration, job, integration or bug fix), because its post-build QA pass (risk-rank the change, run the tests, add failure-path tests, give a verdict) has to happen before the work is reported as done. Also use it whenever the user asks how to test something, wants test cases or a test plan, asks whether something is ready to ship, wants a bug report, has a failing or flaky test, wants tests or a PR reviewed for missing coverage, or mentions QA, regression, edge cases or release readiness, even without saying "QA". Skip pure explanations, translations, copywriting and mechanical refactors with no behaviour change.
 ---
 
 # Product QA: Risk-Based Quality Engineering
@@ -40,7 +40,7 @@ CAN WE SAFELY RELEASE IT?    → a verdict based on evidence, not test count
 Read the situation and choose. Several can combine.
 
 ### Mode A: Post-build verification (runs by itself)
-When you have just built or changed something, do a QA pass before telling the user it's done. This is the most important mode, because that's when defects are cheapest to catch and you have the full context.
+When you have just built or changed something, do a QA pass before telling the user it's done. If you loaded this skill at the start of a build task, do the build first, then come back here and run this pass before your final reply. This is the most important mode, because that's when defects are cheapest to catch and you have the full context.
 
 1. **Scope the change.** Look at what you touched (`git diff --stat`, the files you edited) and what depends on it. Classify it as new feature, change to existing feature, or high-risk change (money, auth, data migration, concurrency, external provider).
 2. **Risk-rank.** List the top failure modes for this change (usually 3 to 8), using the checklists in `references/checklists.md` and the domain mode that applies (`references/domain-modes.md`).
@@ -102,6 +102,8 @@ Keep it tight. Use this shape:
 **Not verified / needs manual check:** <device, provider sandbox, visual, load, etc.>
 **Verdict:** READY / CONDITIONAL / NOT READY / INSUFFICIENT INFORMATION, plus one line of evidence
 ```
+
+Always end with a line starting `**Verdict:**` followed by exactly one of the four labels in capitals, even when the change is small. A plain-English "fine to merge" is easy to misread; the label makes the call unambiguous.
 
 ### Full QA Assessment (Modes B and C)
 
