@@ -1,0 +1,11 @@
+{
+  "description": "product-qa gate: blocks the end of a turn once when code changed and no QA verdict was given",
+  "hooks": {
+    "UserPromptSubmit": [
+      { "hooks": [{ "type": "command", "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/skills/product-qa/hooks/product-qa-gate.py\" snapshot", "timeout": 30 }] }
+    ],
+    "Stop": [
+      { "hooks": [{ "type": "command", "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/skills/product-qa/hooks/product-qa-gate.py\" check", "timeout": 30, "statusMessage": "Checking for a QA verdict…" }] }
+    ]
+  }
+}

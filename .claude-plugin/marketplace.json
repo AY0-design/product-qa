@@ -5,17 +5,19 @@
   },
   "metadata": {
     "description": "Risk-based QA and release-readiness skill for Claude",
-    "version": "1.0.1"
+    "version": "1.1.0"
   },
   "plugins": [
     {
       "name": "product-qa",
-      "description": "Senior QA pass for anything built: risk analysis, failure-path tests, bug reports, flaky-test triage and release-readiness verdicts. Runs automatically after a feature is built.",
+      "description": "Senior QA pass for anything built: risk analysis, failure-path tests, bug reports, flaky-test triage and release-readiness verdicts. Ships a Stop-hook gate so the post-build pass cannot be skipped.",
       "source": "./",
       "strict": false,
       "skills": [
         "./skills/product-qa"
-      ]
+      ],
+      "version": "1.1.0",
+      "hooks": "./hooks/hooks.json"
     }
   ]
 }

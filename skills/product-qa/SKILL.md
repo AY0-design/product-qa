@@ -51,6 +51,9 @@ When you have just built or changed something, do a QA pass before telling the u
 
 Scale to the size of the change. A copy tweak or a pure styling change needs one or two lines ("ran analyzer + widget tests, 42 passed; no logic changed"), not a 12-section report. A new payment flow gets the full treatment. When unsure, lean toward testing failure paths on anything that writes data or moves money.
 
+#### The gate (hooks/product-qa-gate.py)
+A skill can't force itself to run, so this one ships a hook that does. When it is installed, a `Stop` hook checks whether code changed during the turn (git working tree or HEAD, ignoring docs; outside git, the Edit/Write tools used) and, if the reply has no `**Verdict:**` line, blocks the turn once and asks for this pass. If you see "product-qa gate: code changed this turn but no QA verdict was given", run the Mode A pass now and end with the verdict line. It blocks at most once per turn and fails open on any error. The plugin install wires it up automatically; for manual installs see the README.
+
 ### Mode B: Test strategy for a feature (planned, spec'd or already built)
 Follow the primary flow and produce the full QA Assessment below.
 
